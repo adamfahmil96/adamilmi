@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Adam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .project-item {
+        margin-bottom: var(--spacing-lg);
+      }
+      .project-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        text-decoration: none;
+        border: none;
+      }
+      .project-title:hover {
+        color: var(--accent-color);
+      }
+      .project-meta {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        font-family: var(--font-body);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a href="index.html" class="logo">Adam.</a>
+          <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html" class="active">Portfolio</a></li>
+            <li><a href="writing.html">Writing</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <h1 class="mb-large">Selected Work</h1>
+
+        <div class="project-item">
+          <a href="#" class="project-title">E-Commerce Inventory System</a>
+          <div class="project-meta">Python • Django • PostgreSQL</div>
+          <p>
+            Designed and built a real-time inventory management backend handling
+            high-concurrency requests. Implemented pessimistic locking to
+            prevent race conditions and optimized SQL queries to reduce load
+            times by 40%.
+          </p>
+          <a href="#">View Code &rarr;</a>
+        </div>
+
+        <div class="project-item">
+          <a href="#" class="project-title">SaaS Subscription API</a>
+          <div class="project-meta">PHP • Laravel • Stripe</div>
+          <p>
+            Developed a robust REST API for a SaaS platform, integrating Stripe
+            for recurring billing and webhooks. Built a modular architecture
+            allowing easy addition of new subscription tiers.
+          </p>
+          <a href="#">View Code &rarr;</a>
+        </div>
+
+        <div class="project-item">
+          <a href="#" class="project-title">Data Ingestion Pipeline</a>
+          <div class="project-meta">Python • Celery • Redis</div>
+          <p>
+            Architected an asynchronous task queue system to ingest and process
+            large datasets from third-party APIs. Ensured fault tolerance and
+            retry mechanisms for API rate limits.
+          </p>
+          <a href="#">View Code &rarr;</a>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Adam. Built with simplicity.</p>
+      </footer>
+    </div>
+  </body>
+</html>

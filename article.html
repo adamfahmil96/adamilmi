@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Art of Boring Code - Adam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a href="index.html" class="logo">Adam.</a>
+          <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="writing.html" class="active">Writing</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <header class="article-header">
+            <h1 class="article-title">The Art of Boring Code</h1>
+            <div class="article-meta">
+              <time datetime="2025-10-12">October 12, 2025</time> &mdash;
+              Backend
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p>
+              In the tech industry, "boring" is often a pejorative. We chase the
+              shiny, the new, the complex. We re-architect solid monoliths into
+              microservices because medium.com said so. We rewrite working
+              frontend apps because a new framework gained 10k stars on GitHub.
+            </p>
+
+            <p>
+              But as I've grown as an engineer, and perhaps more importantly as
+              a father and a person who values their time outside of work, I've
+              come to deeply appreciate boring code.
+            </p>
+
+            <h2>What is Boring Code?</h2>
+
+            <p>
+              Boring code is predictable. It does exactly what you expect it to
+              do, in the way you expect it to happen. It follows established
+              patterns. If it's a Django project, it looks like a Django
+              project. If it's Laravel, it respects the framework's idioms.
+            </p>
+
+            <p>
+              Boring code doesn't try to be clever. It trades brevity for
+              clarity. It prefers a verbose <code>for</code> loop over a clever
+              one-liner that requires a PhD in functional programming to
+              decipher at 3 AM when the server is on fire.
+            </p>
+
+            <blockquote>
+              "Debugging is twice as hard as writing the code in the first
+              place. Therefore, if you write the code as cleverly as possible,
+              you are, by definition, not smart enough to debug it." <br />
+              &mdash; Brian Kernighan
+            </blockquote>
+
+            <h2>The Cost of Cleverness</h2>
+
+            <p>
+              I recall a project where I implemented a highly dynamic
+              meta-programming system to handle form validations. It reduced the
+              boilerplate code by 60%. I felt like a wizard. It was elegant,
+              dry, and compact.
+            </p>
+
+            <p>
+              Six months later, a junior developer asked me how to add a simple
+              conditional validation. I stared at my own code for twenty
+              minutes, completely baffled. The abstraction was so heavy it had
+              collapsed under its own weight. I had saved writing 50 lines of
+              duplicate code but cost myself (and the team) hours of cognitive
+              load.
+            </p>
+
+            <h3>Why Reliability Matters</h3>
+
+            <p>
+              Reliability creates trust. When your code is boring and reliable,
+              your team trusts you. When your systems are boring and stable,
+              your users trust you. And when you trust your own code, you sleep
+              better at night.
+            </p>
+
+            <p>
+              So, let's raise a glass to the boring, the mundane, the standard.
+              Let's write code that is delightfully unexciting, so our lives can
+              be anything but.
+            </p>
+          </div>
+        </article>
+
+        <div class="mt-large text-center">
+          <a href="writing.html" style="border: none">&larr; Back to Writing</a>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Adam. Built with simplicity.</p>
+      </footer>
+    </div>
+  </body>
+</html>
