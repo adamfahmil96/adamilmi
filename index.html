@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adam - Fullstack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              dark: "#0f172a", // Slate 900
+              light: "#f8fafc", // Slate 50
+              accent: "#10b981", // Emerald 500
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar to keep it "Clean" */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-light text-dark font-sans antialiased selection:bg-accent selection:text-white"
+  >
+    <!-- Navbar -->
+    <nav
+      class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a
+            href="#"
+            class="font-mono text-xl font-bold tracking-tighter hover:text-accent transition-colors"
+            >adamilmi.me</a
+          >
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#about"
+              class="text-sm font-medium hover:text-accent transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="text-sm font-medium hover:text-accent transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#portfolio"
+              class="text-sm font-medium hover:text-accent transition-colors"
+              >Portfolio</a
+            >
+            <a
+              href="#blog"
+              class="text-sm font-medium hover:text-accent transition-colors"
+              >Blog</a
+            >
+          </div>
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-2xl focus:outline-none text-slate-700">
+            &#9776;
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu injected by JS -->
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex items-center justify-center pt-16"
+    >
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <div class="mb-8 relative inline-block">
+          <!-- Placeholder Image -->
+          <div
+            class="w-32 h-32 md:w-40 md:h-40 bg-slate-200 rounded-full mx-auto overflow-hidden border-4 border-white shadow-lg"
+          >
+            <img
+              src="https://ui-avatars.com/api/?name=Adam+Ilmi&background=0f172a&color=10b981&size=256&font-size=0.33"
+              alt="Adam"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div
+            class="absolute bottom-0 right-0 bg-accent text-white text-[10px] uppercase font-bold px-2 py-1 rounded-full border-2 border-white tracking-wider"
+          >
+            Open to Work
+          </div>
+        </div>
+        <h1
+          class="font-mono text-4xl md:text-6xl font-bold mb-4 tracking-tight leading-tight"
+        >
+          Hi, I'm
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-emerald-700"
+            >Adam</span
+          >.
+        </h1>
+        <p
+          class="font-mono text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto"
+        >
+          Crafting Robust Backend Systems & Scalable Architecture.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#portfolio"
+            class="px-8 py-3 bg-dark text-white font-medium rounded-lg hover:bg-slate-800 transition-all hover:shadow-lg transform hover:-translate-y-1"
+          >
+            View Portfolio
+          </a>
+          <a
+            href="#about"
+            class="px-8 py-3 bg-white text-dark border border-slate-200 font-medium rounded-lg hover:bg-slate-50 transition-all hover:shadow-lg transform hover:-translate-y-1"
+          >
+            About Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2
+          class="font-mono text-3xl font-bold mb-12 text-center decoration-accent underline decoration-4 underline-offset-8"
+        >
+          About Me
+        </h2>
+        <div class="prose prose-lg prose-slate mx-auto text-slate-600">
+          <p class="mb-6">
+            Halo! Saya Adam, 29 tahun. Saat ini saya berkarya sebagai
+            <span class="font-bold text-dark"
+              >Fullstack Developer (Spesialis Backend)</span
+            >
+            di
+            <span class="text-accent font-semibold"
+              >Universitas Sebelas Maret (UNS)</span
+            >.
+          </p>
+          <p class="mb-6">
+            Perjalanan karir saya dimulai di dunia startup bersama
+            <span class="font-bold text-dark">Takodam</span> sebagai Software
+            Engineer selama lebih dari 4 tahun. Di sana, saya belajar banyak
+            tentang agility dan rapid development. Transisi ke sektor edukasi
+            telah membuka wawasan baru saya tentang pentingnya stabilitas dan
+            skalabilitas dalam sistem berskala besar.
+          </p>
+          <p class="mb-6">
+            Ketertarikan teknis saya saat ini berpusat pada
+            <span
+              class="font-mono text-sm bg-slate-100 px-1 py-0.5 rounded text-slate-800"
+              >Big Data (Hadoop/Spark)</span
+            >
+            dan merancang
+            <span
+              class="font-mono text-sm bg-slate-100 px-1 py-0.5 rounded text-slate-800"
+              >API Gateway</span
+            >
+            yang efisien. Di luar koding, saya adalah seorang ayah yang mencoba
+            menyeimbangkan logika kode dengan logika 'jokes bapak-bapak'.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section (Bento Grid) -->
+    <section id="skills" class="py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="font-mono text-3xl font-bold mb-12 text-center decoration-accent underline decoration-4 underline-offset-8"
+        >
+          Tech Stack
+        </h2>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 h-auto md:h-96"
+        >
+          <!-- Expert Block (Span 2 cols, 2 rows) - Main Focus -->
+          <div
+            class="md:col-span-2 md:row-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"
+            >
+              <svg
+                class="w-32 h-32 text-accent"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"
+                />
+              </svg>
+            </div>
+            <h3 class="font-mono text-xl font-bold mb-4 text-accent">
+              Expertise
+            </h3>
+            <p class="text-slate-500 mb-6 text-sm">
+              Bertahun-tahun membangun sistem backend yang handal.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <span class="w-24 font-bold text-slate-700">Python</span>
+                <div
+                  class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden"
+                >
+                  <div class="h-full bg-slate-800 w-[95%]"></div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <span class="w-24 font-bold text-slate-700">Django</span>
+                <div
+                  class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden"
+                >
+                  <div class="h-full bg-accent w-[90%]"></div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <span class="w-24 font-bold text-slate-700">REST API</span>
+                <div
+                  class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden"
+                >
+                  <div class="h-full bg-slate-800 w-[92%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Stack Block -->
+          <div
+            class="bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-800 text-white flex flex-col justify-center"
+          >
+            <h3 class="font-mono text-lg font-bold mb-3 text-emerald-400">
+              Current Focus
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> PHP
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                Laravel
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                PostgreSQL
+              </li>
+            </ul>
+          </div>
+
+          <!-- Learning Block -->
+          <div
+            class="bg-emerald-50 p-6 rounded-2xl shadow-sm border border-emerald-100 flex flex-col justify-center"
+          >
+            <h3 class="font-mono text-lg font-bold mb-3 text-emerald-800">
+              Learning
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1 bg-white text-emerald-700 text-xs font-bold rounded border border-emerald-200"
+                >TOGAF</span
+              >
+              <span
+                class="px-3 py-1 bg-white text-emerald-700 text-xs font-bold rounded border border-emerald-200"
+                >Figma</span
+              >
+              <span
+                class="px-3 py-1 bg-white text-emerald-700 text-xs font-bold rounded border border-emerald-200"
+                >CI/CD</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="font-mono text-3xl font-bold mb-12 text-center decoration-accent underline decoration-4 underline-offset-8"
+        >
+          Selected Works
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project A -->
+          <div
+            class="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="h-48 bg-slate-800 flex items-center justify-center group-hover:bg-slate-700 transition-colors"
+            >
+              <span class="text-4xl text-emerald-500 font-mono font-bold"
+                >SIPPK</span
+              >
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3
+                  class="font-bold text-xl text-slate-900 group-hover:text-accent transition-colors"
+                >
+                  SIPPK
+                </h3>
+                <span
+                  class="text-xs font-mono py-1 px-2 bg-slate-100 rounded text-slate-600"
+                  >Laravel</span
+                >
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Sistem Informasi Pemerintahan untuk efisiensi birokrasi dan
+                manajemen data terpusat.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm font-bold text-accent hover:underline"
+              >
+                View Case Study &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Project B -->
+          <div
+            class="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="h-48 bg-emerald-600 flex items-center justify-center group-hover:bg-emerald-500 transition-colors"
+            >
+              <span class="text-4xl text-white font-mono font-bold">FTM</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3
+                  class="font-bold text-xl text-slate-900 group-hover:text-accent transition-colors"
+                >
+                  Family Tree
+                </h3>
+                <span
+                  class="text-xs font-mono py-1 px-2 bg-slate-100 rounded text-slate-600"
+                  >Personal</span
+                >
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Aplikasi manajemen silsilah keluarga dengan visualisasi graf
+                yang interaktif.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm font-bold text-accent hover:underline"
+              >
+                View Project &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Project C -->
+          <div
+            class="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="h-48 bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors"
+            >
+              <span class="text-4xl text-slate-400 font-mono font-bold"
+                >WDS</span
+              >
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3
+                  class="font-bold text-xl text-slate-900 group-hover:text-accent transition-colors"
+                >
+                  Web Dev Services
+                </h3>
+                <span
+                  class="text-xs font-mono py-1 px-2 bg-slate-100 rounded text-slate-600"
+                  >WordPress</span
+                >
+              </div>
+              <p class="text-slate-600 text-sm mb-4">
+                Solusi website berbasis WordPress & Elementor untuk UMKM dan
+                klien personal.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-sm font-bold text-accent hover:underline"
+              >
+                Visit Site &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2
+          class="font-mono text-3xl font-bold mb-12 text-center decoration-accent underline decoration-4 underline-offset-8"
+        >
+          Writings
+        </h2>
+        <div class="space-y-6">
+          <!-- Article 1 -->
+          <article
+            class="flex flex-col md:flex-row gap-6 items-start md:items-center p-6 bg-white rounded-lg border border-slate-100 hover:shadow-md transition-shadow group"
+          >
+            <div class="flex-1">
+              <div class="text-xs font-mono text-accent mb-2">Dec 2025</div>
+              <h3
+                class="font-bold text-lg mb-2 text-slate-800 group-hover:text-accent cursor-pointer transition-colors"
+              >
+                Optimizing Django ORM for High Traffic
+              </h3>
+              <p class="text-slate-500 text-sm">
+                Deep dive into select_related, prefetch_related, and database
+                indexes.
+              </p>
+            </div>
+            <div class="shrink-0">
+              <a
+                href="#"
+                class="text-sm font-bold text-slate-400 hover:text-dark transition-colors"
+                >Read &rarr;</a
+              >
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article
+            class="flex flex-col md:flex-row gap-6 items-start md:items-center p-6 bg-white rounded-lg border border-slate-100 hover:shadow-md transition-shadow group"
+          >
+            <div class="flex-1">
+              <div class="text-xs font-mono text-accent mb-2">Nov 2025</div>
+              <h3
+                class="font-bold text-lg mb-2 text-slate-800 group-hover:text-accent cursor-pointer transition-colors"
+              >
+                Transitioning from Monolith to Microservices
+              </h3>
+              <p class="text-slate-500 text-sm">
+                Lessons learned during the migration process at a growing
+                startup.
+              </p>
+            </div>
+            <div class="shrink-0">
+              <a
+                href="#"
+                class="text-sm font-bold text-slate-400 hover:text-dark transition-colors"
+                >Read &rarr;</a
+              >
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article
+            class="flex flex-col md:flex-row gap-6 items-start md:items-center p-6 bg-white rounded-lg border border-slate-100 hover:shadow-md transition-shadow group"
+          >
+            <div class="flex-1">
+              <div class="text-xs font-mono text-accent mb-2">Oct 2025</div>
+              <h3
+                class="font-bold text-lg mb-2 text-slate-800 group-hover:text-accent cursor-pointer transition-colors"
+              >
+                Why I Chose Laravel for Enterprise Apps
+              </h3>
+              <p class="text-slate-500 text-sm">
+                A Pythonista's perspective on the Laravel ecosystem and its
+                features.
+              </p>
+            </div>
+            <div class="shrink-0">
+              <a
+                href="#"
+                class="text-sm font-bold text-slate-400 hover:text-dark transition-colors"
+                >Read &rarr;</a
+              >
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-slate-400 py-12 border-t border-slate-800">
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="text-center md:text-left">
+          <span class="font-mono text-xl font-bold text-white block mb-2"
+            >adamilmi.me</span
+          >
+          <p class="text-sm">&copy; 2025 Adam Ilmi. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-slate-400 hover:text-white transition-colors">
+            GitHub
+          </a>
+          <a href="#" class="text-slate-400 hover:text-white transition-colors">
+            LinkedIn
+          </a>
+          <a href="#" class="text-slate-400 hover:text-white transition-colors">
+            Twitter
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const btn = document.querySelector("nav button");
+      const nav = document.querySelector("nav");
+
+      // Create menu
+      const menu = document.createElement("div");
+      menu.className =
+        "md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 absolute top-16 left-0 w-full hidden flex-col shadow-lg transition-all";
+      menu.innerHTML = `
+            <a href="#about" class="block px-6 py-4 text-sm font-bold text-slate-600 hover:bg-slate-50 border-b border-slate-50 hover:text-accent">About</a>
+            <a href="#skills" class="block px-6 py-4 text-sm font-bold text-slate-600 hover:bg-slate-50 border-b border-slate-50 hover:text-accent">Skills</a>
+            <a href="#portfolio" class="block px-6 py-4 text-sm font-bold text-slate-600 hover:bg-slate-50 border-b border-slate-50 hover:text-accent">Portfolio</a>
+            <a href="#blog" class="block px-6 py-4 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-accent">Blog</a>
+        `;
+      nav.appendChild(menu);
+
+      // Toggle
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+      });
+
+      // Close menu on click
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+          menu.classList.remove("flex");
+        });
+      });
+    </script>
+  </body>
+</html>
