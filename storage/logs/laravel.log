@@ -1,0 +1,47 @@
+[2026-06-04 02:53:43] production.ERROR: Class "Str" not found {"exception":"[object] (Error(code: 0): Class \"Str\" not found at /home/adamfahmil96/own/projects/adamilmi/config/database.php:81)
+[stacktrace]
+#0 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(115): require()
+#1 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(115): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->{closure:Illuminate\\Foundation\\Bootstrap\\LoadConfiguration::loadConfigurationFile():115}()
+#2 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(96): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFile()
+#3 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php(55): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles()
+#4 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap()
+#5 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(494): Illuminate\\Foundation\\Application->bootstrapWith()
+#6 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle()
+#8 /home/adamfahmil96/own/projects/adamilmi/artisan(11): Illuminate\\Foundation\\Application->handleCommand()
+#9 {main}
+"} 
+[2026-06-04 10:03:59] local.ERROR: The /home/adamfahmil96/own/projects/adamilmi/bootstrap/cache directory must be present and writable. {"exception":"[object] (Exception(code: 0): The /home/adamfahmil96/own/projects/adamilmi/bootstrap/cache directory must be present and writable. at /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php:179)
+[stacktrace]
+#0 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(132): Illuminate\\Foundation\\PackageManifest->write()
+#1 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(108): Illuminate\\Foundation\\PackageManifest->build()
+#2 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(90): Illuminate\\Foundation\\PackageManifest->getManifest()
+#3 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(79): Illuminate\\Foundation\\PackageManifest->config()
+#4 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\\Foundation\\PackageManifest->aliases()
+#5 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate\\Foundation\\Bootstrap\\RegisterFacades->bootstrap()
+#6 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(494): Illuminate\\Foundation\\Application->bootstrapWith()
+#7 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(196): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#8 /home/adamfahmil96/own/projects/adamilmi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle()
+#9 /home/adamfahmil96/own/projects/adamilmi/artisan(11): Illuminate\\Foundation\\Application->handleCommand()
+#10 {main}
+"} 
+[2026-06-04 10:09:03] local.ERROR: Type of App\Filament\Resources\CategoryResource::$navigationGroup must be UnitEnum|string|null (as in class Filament\Resources\Resource) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Resources\\CategoryResource::$navigationGroup must be UnitEnum|string|null (as in class Filament\\Resources\\Resource) at /home/adamfahmil96/own/projects/adamilmi/app/Filament/Resources/CategoryResource.php:14)
+[stacktrace]
+#0 {main}
+"} 
+[2026-06-04 10:10:31] local.ERROR: Type of App\Filament\Resources\CategoryResource::$navigationIcon must be BackedEnum|string|null (as in class Filament\Resources\Resource) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Resources\\CategoryResource::$navigationIcon must be BackedEnum|string|null (as in class Filament\\Resources\\Resource) at /home/adamfahmil96/own/projects/adamilmi/app/Filament/Resources/CategoryResource.php:14)
+[stacktrace]
+#0 {main}
+"} 
+[2026-06-04 10:15:21] local.ERROR: Type of App\Filament\Resources\CategoryResource::$navigationLabel must be ?string (as in class Filament\Resources\Resource) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of App\\Filament\\Resources\\CategoryResource::$navigationLabel must be ?string (as in class Filament\\Resources\\Resource) at /home/adamfahmil96/own/projects/adamilmi/app/Filament/Resources/CategoryResource.php:14)
+[stacktrace]
+#0 {main}
+"} 
+[2026-06-04 10:17:06] local.ERROR: Could not check compatibility between App\Filament\Resources\CategoryResource::form(Filament\Forms\Form $form): Filament\Forms\Form and Filament\Resources\Resource::form(Filament\Schemas\Schema $schema): Filament\Schemas\Schema, because class Filament\Forms\Form is not available {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Could not check compatibility between App\\Filament\\Resources\\CategoryResource::form(Filament\\Forms\\Form $form): Filament\\Forms\\Form and Filament\\Resources\\Resource::form(Filament\\Schemas\\Schema $schema): Filament\\Schemas\\Schema, because class Filament\\Forms\\Form is not available at /home/adamfahmil96/own/projects/adamilmi/app/Filament/Resources/CategoryResource.php:26)
+[stacktrace]
+#0 {main}
+"} 
+[2026-06-04 10:19:38] local.ERROR: Cannot redeclare non static Filament\Pages\Page::$view as static App\Filament\Pages\Dashboard::$view {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare non static Filament\\Pages\\Page::$view as static App\\Filament\\Pages\\Dashboard::$view at /home/adamfahmil96/own/projects/adamilmi/app/Filament/Pages/Dashboard.php:8)
+[stacktrace]
+#0 {main}
+"} 
