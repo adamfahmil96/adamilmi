@@ -10,19 +10,26 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create admin user
-        User::create([
-            'name' => 'Adam Fahmil',
-            'email' => 'admin@adamilmi.me',
-            'password' => Hash::make('password'),
-        ]);
+        // Create or update admin user
+        User::updateOrCreate(
+            ['email' => 'admin@adamilmi.me'],
+            [
+                'name' => 'Adam Fahmil',
+                'password' => Hash::make('password'),
+            ]
+        );
 
-        // Run seeders
+        // Run seeders (all idempotent - safe to run multiple times)
         $this->call([
             CategorySeeder::class,
             SkillSeeder::class,
             ExperienceSeeder::class,
+            EducationSeeder::class,
+            CertificationSeeder::class,
             ProjectSeeder::class,
+            PostSeeder::class,
         ]);
+
+        $this->command->info('All seeders completed successfully!');
     }
 }

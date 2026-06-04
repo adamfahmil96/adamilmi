@@ -46,7 +46,12 @@ class ProjectSeeder extends Seeder
         ];
 
         foreach ($projects as $project) {
-            Project::create($project);
+            Project::updateOrCreate(
+                ['slug' => $project['slug']],
+                $project
+            );
         }
+
+        $this->command->info('Projects seeded successfully.');
     }
 }

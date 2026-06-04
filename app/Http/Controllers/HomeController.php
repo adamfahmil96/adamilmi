@@ -15,7 +15,7 @@ class HomeController extends Controller
         $skills = Skill::ordered()->get()->groupBy('category');
         $experiences = Experience::ordered()->get();
         $featuredProjects = Project::featured()->ordered()->limit(6)->get();
-        $latestPosts = Post::published()->latest()->limit(3)->get();
+        $latestPosts = Post::published()->with('category')->latest()->limit(3)->get();
 
         return view('pages.home', compact(
             'skills',

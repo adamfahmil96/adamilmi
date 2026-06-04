@@ -13,6 +13,11 @@ class PostSeeder extends Seeder
         $backendCategory = Category::where('slug', 'backend')->first();
         $careerCategory = Category::where('slug', 'career')->first();
 
+        if (!$backendCategory || !$careerCategory) {
+            $this->command->warn('Categories not found. Please run CategorySeeder first.');
+            return;
+        }
+
         $posts = [
             [
                 'category_id' => $backendCategory->id,
@@ -47,7 +52,12 @@ class PostSeeder extends Seeder
         ];
 
         foreach ($posts as $post) {
-            Post::create($post);
+            Post::updateOrCreate(
+                ['slug' => $post['slug']],
+                $post
+            );
         }
+
+        $this->command->info('Posts seeded successfully.');
     }
 }
