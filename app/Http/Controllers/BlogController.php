@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Post::published()->latest();
+        $query = Post::with('category')->published()->latest();
 
         if ($request->has('search')) {
             $search = $request->input('search');
@@ -33,7 +33,8 @@ class BlogController extends Controller
             abort(404);
         }
 
-        $relatedPosts = Post::published()
+        $relatedPosts = Post::with('category')
+            ->published()
             ->where('category_id', $post->category_id)
             ->where('id', '!=', $post->id)
             ->latest()
@@ -45,7 +46,8 @@ class BlogController extends Controller
 
     public function category(Category $category)
     {
-        $posts = Post::published()
+        $posts = Post::with('category')
+            ->published()
             ->where('category_id', $category->id)
             ->latest()
             ->paginate(12);

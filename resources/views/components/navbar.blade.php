@@ -1,21 +1,21 @@
-<nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-            <a href="{{ route('home') }}" class="font-mono text-xl font-bold tracking-tighter hover:text-primary-600 transition-colors">
+            <a href="{{ route('home') }}" class="font-mono text-xl font-bold tracking-tighter text-slate-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                 adamilmi.me
             </a>
             
             <div class="hidden md:flex space-x-8">
-                <a href="{{ route('home') }}#about" class="text-sm font-medium hover:text-primary-600 transition-colors">About</a>
-                <a href="{{ route('home') }}#skills" class="text-sm font-medium hover:text-primary-600 transition-colors">Skills</a>
-                <a href="{{ route('home') }}#portfolio" class="text-sm font-medium hover:text-primary-600 transition-colors">Portfolio</a>
-                <a href="{{ route('home') }}#experience" class="text-sm font-medium hover:text-primary-600 transition-colors">Experience</a>
-                <a href="{{ route('blog.index') }}" class="text-sm font-medium hover:text-primary-600 transition-colors">Blog</a>
-                <a href="{{ route('home') }}#contact" class="text-sm font-medium hover:text-primary-600 transition-colors">Contact</a>
+                <a href="{{ route('home') }}#about" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                <a href="{{ route('home') }}#skills" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+                <a href="{{ route('home') }}#portfolio" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Portfolio</a>
+                <a href="{{ route('home') }}#experience" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
+                <a href="{{ route('blog.index') }}" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Blog</a>
+                <a href="{{ route('home') }}#contact" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="p-2 text-slate-600 hover:text-primary-600 transition-colors" aria-label="Toggle dark mode">
+                <button id="theme-toggle" class="p-2 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" aria-label="Toggle dark mode">
                     <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
                     </svg>
@@ -24,7 +24,7 @@
                     </svg>
                 </button>
 
-                <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none text-slate-700">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none text-slate-700 dark:text-slate-300">
                     &#9776;
                 </button>
             </div>
@@ -32,14 +32,14 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-lg">
+    <div id="mobile-menu" class="md:hidden hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-700 shadow-lg">
         <div class="px-6 py-4 space-y-3">
-            <a href="{{ route('home') }}#about" class="block text-sm font-bold text-slate-600 hover:text-primary-600 py-2">About</a>
-            <a href="{{ route('home') }}#skills" class="block text-sm font-bold text-slate-600 hover:text-primary-600 py-2">Skills</a>
-            <a href="{{ route('home') }}#portfolio" class="block text-sm font-bold text-slate-600 hover:text-primary-600 py-2">Portfolio</a>
-            <a href="{{ route('home') }}#experience" class="block text-sm font-bold text-slate-600 hover:text-primary-600 py-2">Experience</a>
-            <a href="{{ route('blog.index') }}" class="block text-sm font-bold text-slate-600 hover:text-primary-600 py-2">Blog</a>
-            <a href="{{ route('home') }}#contact" class="block text-sm font-bold text-slate-600 hover:text-primary-600 py-2">Contact</a>
+            <a href="{{ route('home') }}#about" class="block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 py-2">About</a>
+            <a href="{{ route('home') }}#skills" class="block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 py-2">Skills</a>
+            <a href="{{ route('home') }}#portfolio" class="block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 py-2">Portfolio</a>
+            <a href="{{ route('home') }}#experience" class="block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 py-2">Experience</a>
+            <a href="{{ route('blog.index') }}" class="block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 py-2">Blog</a>
+            <a href="{{ route('home') }}#contact" class="block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 py-2">Contact</a>
         </div>
     </div>
 </nav>
@@ -67,9 +67,9 @@
     const lightIcon = document.getElementById('theme-toggle-light-icon');
 
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        lightIcon.classList.remove('hidden');
-    } else {
         darkIcon.classList.remove('hidden');
+    } else {
+        lightIcon.classList.remove('hidden');
     }
 
     themeToggleBtn.addEventListener('click', function() {

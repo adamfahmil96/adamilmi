@@ -1,4 +1,4 @@
-<footer class="bg-dark text-slate-400 py-12 border-t border-slate-800">
+<footer class="bg-slate-900 dark:bg-slate-950 text-slate-400 py-12 border-t border-slate-800 dark:border-slate-700">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="text-center md:text-left">
             <span class="font-mono text-xl font-bold text-white block mb-2">adamilmi.me</span>

@@ -122,6 +122,8 @@ Akses website di: `http://localhost:8000`
 
 ## Admin Panel
 
+> **Pemula di Filament?** Baca tutorial lengkap dasar-dasar Filament di [`docs/FILAMENT_TUTORIAL.md`](docs/FILAMENT_TUTORIAL.md) sebelum mulai development.
+
 ### Access
 
 - URL: `http://localhost:8000/admin`
@@ -142,6 +144,8 @@ Akses website di: `http://localhost:8000`
 | CertificationResource | Portfolio > Certifications | Kelola sertifikasi |
 
 ### Filament Commands
+
+Untuk penjelasan lengkap setiap command, arsitektur, dan cara penggunaannya, lihat [`docs/FILAMENT_TUTORIAL.md`](docs/FILAMENT_TUTORIAL.md).
 
 #### Resource Management
 ```bash
@@ -400,6 +404,14 @@ APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://adamilmi.me
 ```
+
+---
+
+## Documentation
+
+| File | Deskripsi |
+|---|---|
+| [`docs/FILAMENT_TUTORIAL.md`](docs/FILAMENT_TUTORIAL.md) | Tutorial dasar Filament PHP (instalasi, arsitektur, CRUD, form, table, widget, dll) |
 
 ---
 
