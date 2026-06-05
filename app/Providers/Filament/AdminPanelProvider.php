@@ -11,6 +11,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -61,6 +62,41 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
             ])
+            ->renderHook(
+                PanelsRenderHook::FOOTER,
+                fn (): string => <<<'blade'
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            document.addEventListener("keydown", function(e) {
+                                if (e.key !== "Tab") return;
+
+                                var activeEl = document.activeElement;
+                                if (!activeEl) return;
+
+                                var tiptap = activeEl.closest(".tiptap");
+                                if (!tiptap) return;
+
+                                var selection = window.getSelection();
+                                if (!selection.rangeCount) return;
+
+                                var range = selection.getRangeAt(0);
+                                var node = range.startContainer;
+                                var pre = node.nodeType === 3 ? node.parentNode.closest("pre") : node.closest("pre");
+
+                                if (!pre) return;
+
+                                e.preventDefault();
+
+                                if (e.shiftKey) {
+                                    document.execCommand("outdent", false, null);
+                                } else {
+                                    document.execCommand("insertText", false, "    ");
+                                }
+                            });
+                        });
+                    </script>
+                blade,
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

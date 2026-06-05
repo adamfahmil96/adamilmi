@@ -48,7 +48,7 @@
             @endif
 
             <!-- Article Content -->
-            <div class="prose prose-lg prose-slate max-w-none prose-headings:font-heading prose-headings:text-slate-900 dark:prose-headings:text-white prose-p:text-slate-600 dark:prose-p:text-slate-300 prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-a:no-underline hover:prose-a:underline prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950 prose-pre:text-slate-100 prose-blockquote:border-primary-600 prose-blockquote:text-slate-600 dark:prose-blockquote:text-slate-300">
+            <div class="prose prose-lg max-w-none">
                 {!! $post->content !!}
             </div>
 
