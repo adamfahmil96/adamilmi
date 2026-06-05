@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CertificationResource\Pages;
 use App\Models\Certification;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -26,7 +28,7 @@ class CertificationResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Certification Details')
+                Schemas\Components\Section::make('Certification Details')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -92,12 +94,12 @@ class CertificationResource extends Resource
             ])
             ->defaultSort('sort_order')
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

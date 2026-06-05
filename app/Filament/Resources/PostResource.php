@@ -5,8 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Post;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -28,7 +30,7 @@ class PostResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Post Content')
+                Schemas\Components\Section::make('Post Content')
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -64,7 +66,8 @@ class PostResource extends Resource
                                 'link',
                                 'blockquote',
                                 'codeBlock',
-                                'heading',
+                                'h2',
+                                'h3',
                                 'bulletList',
                                 'orderedList',
                                 'redo',
@@ -78,7 +81,7 @@ class PostResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('Publishing')
+                Schemas\Components\Section::make('Publishing')
                     ->schema([
                         Forms\Components\Toggle::make('is_published')
                             ->label('Published')
@@ -95,7 +98,7 @@ class PostResource extends Resource
                     ])
                     ->columns(3),
 
-                Forms\Components\Section::make('SEO')
+                Schemas\Components\Section::make('SEO')
                     ->schema([
                         Forms\Components\TextInput::make('meta_title')
                             ->label('Meta Title')
@@ -148,12 +151,12 @@ class PostResource extends Resource
                     ->native(false),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

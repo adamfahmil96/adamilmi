@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ExperienceResource\Pages;
 use App\Models\Experience;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -26,7 +28,7 @@ class ExperienceResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Experience Details')
+                Schemas\Components\Section::make('Experience Details')
                     ->schema([
                         Forms\Components\TextInput::make('company')
                             ->required()
@@ -104,12 +106,12 @@ class ExperienceResource extends Resource
             ])
             ->defaultSort('sort_order')
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MessageResource\Pages;
 use App\Models\Message;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -26,7 +28,7 @@ class MessageResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Message Details')
+                Schemas\Components\Section::make('Message Details')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -81,12 +83,12 @@ class MessageResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Actions\ViewAction::make(),
+                Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

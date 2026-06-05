@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Models\Project;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,7 +29,7 @@ class ProjectResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Project Details')
+                Schemas\Components\Section::make('Project Details')
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
@@ -55,7 +57,8 @@ class ProjectResource extends Resource
                                 'link',
                                 'blockquote',
                                 'codeBlock',
-                                'heading',
+                                'h2',
+                                'h3',
                                 'bulletList',
                                 'orderedList',
                                 'redo',
@@ -69,7 +72,7 @@ class ProjectResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('Links & Technologies')
+                Schemas\Components\Section::make('Links & Technologies')
                     ->schema([
                         Forms\Components\TextInput::make('github_url')
                             ->label('GitHub URL')
@@ -87,7 +90,7 @@ class ProjectResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('Settings')
+                Schemas\Components\Section::make('Settings')
                     ->schema([
                         Forms\Components\Toggle::make('is_featured')
                             ->label('Featured')
@@ -134,12 +137,12 @@ class ProjectResource extends Resource
                     ->native(false),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
