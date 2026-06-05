@@ -29,27 +29,32 @@ class CategoryResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                Schemas\Components\Section::make('Category Details')
+                    ->columnSpanFull()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255)
-                    ->unique(Category::class, 'slug', ignoreRecord: true),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(Category::class, 'slug', ignoreRecord: true),
 
-                Forms\Components\Textarea::make('description')
-                    ->rows(3)
-                    ->maxLength(500),
+                        Forms\Components\Textarea::make('description')
+                            ->rows(3)
+                            ->maxLength(500),
 
-                Forms\Components\ColorPicker::make('color')
-                    ->label('Color'),
+                        Forms\Components\ColorPicker::make('color')
+                            ->label('Color'),
 
-                Forms\Components\TextInput::make('sort_order')
-                    ->numeric()
-                    ->default(0),
+                        Forms\Components\TextInput::make('sort_order')
+                            ->numeric()
+                            ->default(0),
+                    ])
+                    ->columns(2),
             ]);
     }
 

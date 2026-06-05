@@ -30,86 +30,95 @@ class PostResource extends Resource
     {
         return $schema
             ->schema([
-                Schemas\Components\Section::make('Post Content')
+                Schemas\Components\Grid::make()
+                    ->columnSpanFull()
+                    ->columns(4)
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(255)
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                        Schemas\Components\Grid::make(1)
+                            ->schema([
+                                Schemas\Components\Section::make('Post Content')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->live(onBlur: true)
+                                            ->afterStateUpdated(fn(Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(255)
-                            ->unique(Post::class, 'slug', ignoreRecord: true),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->unique(Post::class, 'slug', ignoreRecord: true),
 
-                        Forms\Components\Select::make('category_id')
-                            ->label('Category')
-                            ->relationship('category', 'name')
-                            ->required()
-                            ->searchable()
-                            ->preload(),
+                                        Forms\Components\Select::make('category_id')
+                                            ->label('Category')
+                                            ->relationship('category', 'name')
+                                            ->required()
+                                            ->searchable()
+                                            ->preload(),
 
-                        Forms\Components\Textarea::make('excerpt')
-                            ->required()
-                            ->rows(3)
-                            ->maxLength(500),
+                                        Forms\Components\Textarea::make('excerpt')
+                                            ->required()
+                                            ->rows(3)
+                                            ->maxLength(500),
 
-                        Forms\Components\RichEditor::make('content')
-                            ->required()
-                            ->columnSpanFull()
-                            ->toolbarButtons([
-                                'bold',
-                                'italic',
-                                'underline',
-                                'strike',
-                                'link',
-                                'blockquote',
-                                'codeBlock',
-                                'h2',
-                                'h3',
-                                'bulletList',
-                                'orderedList',
-                                'redo',
-                                'undo',
-                            ]),
+                                        Forms\Components\RichEditor::make('content')
+                                            ->required()
+                                            ->columnSpanFull()
+                                            ->toolbarButtons([
+                                                'bold',
+                                                'italic',
+                                                'underline',
+                                                'strike',
+                                                'link',
+                                                'blockquote',
+                                                'codeBlock',
+                                                'h2',
+                                                'h3',
+                                                'bulletList',
+                                                'orderedList',
+                                                'redo',
+                                                'undo',
+                                            ]),
 
-                        Forms\Components\FileUpload::make('featured_image')
-                            ->image()
-                            ->directory('posts')
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(2),
+                                        Forms\Components\FileUpload::make('featured_image')
+                                            ->image()
+                                            ->directory('posts')
+                                            ->columnSpanFull(),
+                                    ])
+                                    ->columns(2),
 
-                Schemas\Components\Section::make('Publishing')
-                    ->schema([
-                        Forms\Components\Toggle::make('is_published')
-                            ->label('Published')
-                            ->default(false),
+                                Schemas\Components\Section::make('SEO')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('meta_title')
+                                            ->label('Meta Title')
+                                            ->maxLength(255),
 
-                        Forms\Components\DateTimePicker::make('published_at')
-                            ->label('Publish Date')
-                            ->default(now()),
+                                        Forms\Components\Textarea::make('meta_description')
+                                            ->label('Meta Description')
+                                            ->rows(2)
+                                            ->maxLength(160),
+                                    ])
+                                    ->collapsed(),
+                            ])
+                            ->columnSpan(3),
 
-                        Forms\Components\TextInput::make('reading_time')
-                            ->label('Reading Time (minutes)')
-                            ->numeric()
-                            ->default(1),
-                    ])
-                    ->columns(3),
+                        Schemas\Components\Section::make('Publishing')
+                            ->schema([
+                                Forms\Components\Toggle::make('is_published')
+                                    ->label('Published')
+                                    ->default(false),
 
-                Schemas\Components\Section::make('SEO')
-                    ->schema([
-                        Forms\Components\TextInput::make('meta_title')
-                            ->label('Meta Title')
-                            ->maxLength(255),
+                                Forms\Components\DateTimePicker::make('published_at')
+                                    ->label('Publish Date')
+                                    ->default(now()),
 
-                        Forms\Components\Textarea::make('meta_description')
-                            ->label('Meta Description')
-                            ->rows(2)
-                            ->maxLength(160),
-                    ])
-                    ->collapsed(),
+                                Forms\Components\TextInput::make('reading_time')
+                                    ->label('Reading Time (minutes)')
+                                    ->numeric()
+                                    ->default(1),
+                            ])
+                            ->columns(1),
+                    ]),
             ]);
     }
 

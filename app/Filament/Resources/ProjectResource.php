@@ -29,78 +29,87 @@ class ProjectResource extends Resource
     {
         return $schema
             ->schema([
-                Schemas\Components\Section::make('Project Details')
+                Schemas\Components\Grid::make()
+                    ->columnSpanFull()
+                    ->columns(4)
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(255)
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                        Schemas\Components\Grid::make(1)
+                            ->schema([
+                                Schemas\Components\Section::make('Project Details')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->live(onBlur: true)
+                                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(255)
-                            ->unique(Project::class, 'slug', ignoreRecord: true),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->unique(Project::class, 'slug', ignoreRecord: true),
 
-                        Forms\Components\Textarea::make('description')
-                            ->required()
-                            ->rows(3)
-                            ->maxLength(500),
+                                        Forms\Components\Textarea::make('description')
+                                            ->required()
+                                            ->rows(3)
+                                            ->maxLength(500),
 
-                        Forms\Components\RichEditor::make('content')
-                            ->columnSpanFull()
-                            ->toolbarButtons([
-                                'bold',
-                                'italic',
-                                'underline',
-                                'strike',
-                                'link',
-                                'blockquote',
-                                'codeBlock',
-                                'h2',
-                                'h3',
-                                'bulletList',
-                                'orderedList',
-                                'redo',
-                                'undo',
-                            ]),
+                                        Forms\Components\RichEditor::make('content')
+                                            ->columnSpanFull()
+                                            ->toolbarButtons([
+                                                'bold',
+                                                'italic',
+                                                'underline',
+                                                'strike',
+                                                'link',
+                                                'blockquote',
+                                                'codeBlock',
+                                                'h2',
+                                                'h3',
+                                                'bulletList',
+                                                'orderedList',
+                                                'redo',
+                                                'undo',
+                                            ]),
 
-                        Forms\Components\FileUpload::make('image')
-                            ->image()
-                            ->directory('projects')
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(2),
+                                        Forms\Components\FileUpload::make('image')
+                                            ->image()
+                                            ->directory('projects')
+                                            ->columnSpanFull(),
+                                    ])
+                                    ->columns(2),
 
-                Schemas\Components\Section::make('Links & Technologies')
-                    ->schema([
-                        Forms\Components\TextInput::make('github_url')
-                            ->label('GitHub URL')
-                            ->url()
-                            ->maxLength(255),
+                                Schemas\Components\Section::make('Links & Technologies')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('github_url')
+                                            ->label('GitHub URL')
+                                            ->url()
+                                            ->maxLength(255),
 
-                        Forms\Components\TextInput::make('live_url')
-                            ->label('Live Demo URL')
-                            ->url()
-                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('live_url')
+                                            ->label('Live Demo URL')
+                                            ->url()
+                                            ->maxLength(255),
 
-                        Forms\Components\TagsInput::make('technologies')
-                            ->placeholder('Add technology...')
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(2),
+                                        Forms\Components\TagsInput::make('technologies')
+                                            ->placeholder('Add technology...')
+                                            ->columnSpanFull(),
+                                    ])
+                                    ->columns(2),
+                            ])
+                            ->columnSpan(3),
 
-                Schemas\Components\Section::make('Settings')
-                    ->schema([
-                        Forms\Components\Toggle::make('is_featured')
-                            ->label('Featured')
-                            ->default(false),
+                        Schemas\Components\Section::make('Settings')
+                            ->schema([
+                                Forms\Components\Toggle::make('is_featured')
+                                    ->label('Featured')
+                                    ->default(false),
 
-                        Forms\Components\TextInput::make('sort_order')
-                            ->numeric()
-                            ->default(0),
-                    ])
-                    ->columns(2),
+                                Forms\Components\TextInput::make('sort_order')
+                                    ->numeric()
+                                    ->default(0),
+                            ])
+                            ->columns(1),
+                    ]),
             ]);
     }
 

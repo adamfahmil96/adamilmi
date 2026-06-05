@@ -29,6 +29,7 @@ class ExperienceResource extends Resource
         return $schema
             ->schema([
                 Schemas\Components\Section::make('Experience Details')
+                    ->columnSpanFull()
                     ->schema([
                         Forms\Components\TextInput::make('company')
                             ->required()

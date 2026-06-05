@@ -28,33 +28,38 @@ class SkillResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
+                Schemas\Components\Section::make('Skill Details')
+                    ->columnSpanFull()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
 
-                Forms\Components\Select::make('category')
-                    ->required()
-                    ->options(Skill::categories()),
+                        Forms\Components\Select::make('category')
+                            ->required()
+                            ->options(Skill::categories()),
 
-                Forms\Components\TextInput::make('icon')
-                    ->label('Icon (Heroicon name)')
-                    ->placeholder('heroicon-o-code-bracket')
-                    ->maxLength(255),
+                        Forms\Components\TextInput::make('icon')
+                            ->label('Icon (Heroicon name)')
+                            ->placeholder('heroicon-o-code-bracket')
+                            ->maxLength(255),
 
-                Forms\Components\Slider::make('proficiency')
-                    ->label('Proficiency Level')
-                    ->min(0)
-                    ->max(100)
-                    ->step(5)
-                    ->columnSpanFull(),
+                        Forms\Components\Slider::make('proficiency')
+                            ->label('Proficiency Level')
+                            ->minValue(0)
+                            ->maxValue(100)
+                            ->step(5)
+                            ->columnSpanFull(),
 
-                Forms\Components\Toggle::make('is_highlighted')
-                    ->label('Highlighted')
-                    ->default(false),
+                        Forms\Components\Toggle::make('is_highlighted')
+                            ->label('Highlighted')
+                            ->default(false),
 
-                Forms\Components\TextInput::make('sort_order')
-                    ->numeric()
-                    ->default(0),
+                        Forms\Components\TextInput::make('sort_order')
+                            ->numeric()
+                            ->default(0),
+                    ])
+                    ->columns(2),
             ]);
     }
 

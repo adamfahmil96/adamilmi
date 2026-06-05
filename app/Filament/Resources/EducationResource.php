@@ -29,6 +29,7 @@ class EducationResource extends Resource
         return $schema
             ->schema([
                 Schemas\Components\Section::make('Education Details')
+                    ->columnSpanFull()
                     ->schema([
                         Forms\Components\TextInput::make('school_name')
                             ->required()

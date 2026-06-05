@@ -29,6 +29,7 @@ class CertificationResource extends Resource
         return $schema
             ->schema([
                 Schemas\Components\Section::make('Certification Details')
+                    ->columnSpanFull()
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
