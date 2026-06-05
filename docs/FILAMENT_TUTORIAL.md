@@ -257,8 +257,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
-use Filament\Forms\Form;
+use Filament\Actions;                    // ← Untuk table actions (Filament 5)
+use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas;                    // ← Untuk Section component (Filament 5)
+use Filament\Schemas\Schema;
+use Filament\Tables;
 use Filament\Tables\Table;
 
 class PostResource extends Resource
@@ -282,11 +286,16 @@ class PostResource extends Resource
     protected static ?string $recordTitleAttribute = 'title';
 
     // Definisi form (create & edit)
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
-            // Komponen form di sini
-        ]);
+        return $schema
+            ->schema([
+                Schemas\Components\Section::make('Informasi')  // ← Filament 5
+                    ->schema([
+                        Forms\Components\TextInput::make('title'),
+                        // Komponen form lainnya
+                    ]),
+            ]);
     }
 
     // Definisi tabel (list)
@@ -300,10 +309,13 @@ class PostResource extends Resource
                 // Filter di sini
             ])
             ->actions([
-                // Aksi baris di sini
+                Actions\EditAction::make(),      // ← Filament 5 (bukan Tables\Actions)
+                Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                // Aksi massal di sini
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
@@ -324,6 +336,12 @@ class PostResource extends Resource
     }
 }
 ```
+
+> **⚠️ Perubahan Filament 5:**
+> - `Filament\Tables\Actions\*` → `Filament\Actions\*`
+> - `Filament\Forms\Components\Section` → `Filament\Schemas\Components\Section`
+> - `Filament\Forms\Form` → `Filament\Schemas\Schema`
+> - `form(Form $form)` → `form(Schema $schema)`
 
 ### 5.4 Menggunakan `--generate`
 
@@ -378,10 +396,13 @@ RichEditor::make('content')
     ->toolbarButtons([
         'bold', 'italic', 'underline', 'strike',
         'link', 'blockquote', 'codeBlock',
-        'heading', 'bulletList', 'orderedList',
+        'h2', 'h3',                    // ← Filament 5 (bukan 'heading')
+        'bulletList', 'orderedList',
         'redo', 'undo',
     ])
 ```
+
+> **⚠️ Perubahan Filament 5:** Toolbar button `'heading'` dipecah menjadi `'h1'`, `'h2'`, `'h3'`, `'h4'`, `'h5'`, `'h6'`.
 
 #### Select (Dropdown)
 ```php
@@ -469,7 +490,7 @@ Slider::make('proficiency')
 
 #### Section (Grup)
 ```php
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;  // ← Filament 5 (bukan Forms\Components)
 
 Section::make('Informasi Dasar')
     ->description('Isi informasi dasar postingan')
@@ -480,6 +501,8 @@ Section::make('Informasi Dasar')
     ->columns(2)               // 2 kolom grid
     ->collapsible()            // Bisa di-collapse
 ```
+
+> **⚠️ Perubahan Filament 5:** `Section` dipindahkan dari `Filament\Forms\Components` ke `Filament\Schemas\Components`.
 
 #### Grid (Kolom)
 ```php
@@ -635,7 +658,7 @@ SelectFilter::make('category_id')
 
 #### Row Actions (Per Baris)
 ```php
-use Filament\Tables\Actions;
+use Filament\Actions;  // ← Filament 5 (bukan Filament\Tables\Actions)
 
 ->actions([
     Actions\ViewAction::make(),      // Lihat
@@ -651,6 +674,8 @@ use Filament\Tables\Actions;
         ->color('success'),
 ])
 ```
+
+> **⚠️ Perubahan Filament 5:** Semua action classes dipindahkan dari `Filament\Tables\Actions` ke `Filament\Actions`.
 
 #### Bulk Actions (Massal)
 ```php
@@ -671,6 +696,8 @@ use Filament\Tables\Actions;
 
 ```php
 // Di ListPosts.php
+use Filament\Actions;  // ← Filament 5
+
 protected function getHeaderActions(): array
 {
     return [
@@ -767,7 +794,7 @@ app/Filament/Pages/
 namespace App\Filament\Pages;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;  // ← Filament 5
 use Filament\Pages\Page;
 
 class Settings extends Page
@@ -1112,6 +1139,8 @@ TextColumn::make('category.name')
 ### 14.6 Custom Action dengan Modal
 
 ```php
+use Filament\Actions;  // ← Filament 5
+
 Actions\Action::make('publish')
     ->label('Publish')
     ->icon('heroicon-o-check-circle')
@@ -1162,6 +1191,91 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
     ExportBulkAction::make(),
 ])
 ```
+
+---
+
+## 15. Perubahan Filament 5 (Breaking Changes)
+
+Jika Anda upgrade dari Filament 3/4 ke Filament 5, ada beberapa **breaking changes** yang perlu diperhatikan:
+
+### 15.1 Namespace Table Actions
+
+```php
+// ❌ FILAMENT 3/4 (LAMA)
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+
+// ✅ FILAMENT 5 (BARU)
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\ViewAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+```
+
+Atau gunakan prefix:
+```php
+use Filament\Actions;
+
+Actions\EditAction::make()
+Actions\DeleteAction::make()
+```
+
+### 15.2 Namespace Section Component
+
+```php
+// ❌ FILAMENT 3/4 (LAMA)
+use Filament\Forms\Components\Section;
+
+// ✅ FILAMENT 5 (BARU)
+use Filament\Schemas\Components\Section;
+```
+
+### 15.3 Form Method Signature
+
+```php
+// ❌ FILAMENT 3/4 (LAMA)
+use Filament\Forms\Form;
+
+public static function form(Form $form): Form
+{
+    return $form->schema([...]);
+}
+
+// ✅ FILAMENT 5 (BARU)
+use Filament\Schemas\Schema;
+
+public static function form(Schema $schema): Schema
+{
+    return $schema->schema([...]);
+}
+```
+
+### 15.4 RichEditor Toolbar Buttons
+
+```php
+// ❌ FILAMENT 3/4 (LAMA)
+->toolbarButtons([
+    'heading',  // Tidak ada di Filament 5
+])
+
+// ✅ FILAMENT 5 (BARU)
+->toolbarButtons([
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  // Heading dipecah
+])
+```
+
+### 15.5 Ringkasan Perubahan
+
+| Komponen | Filament 3/4 | Filament 5 |
+|----------|--------------|------------|
+| Table Actions | `Filament\Tables\Actions\*` | `Filament\Actions\*` |
+| Section | `Filament\Forms\Components\Section` | `Filament\Schemas\Components\Section` |
+| Form type | `Filament\Forms\Form` | `Filament\Schemas\Schema` |
+| Heading button | `'heading'` | `'h1'`, `'h2'`, `'h3'`, dll |
 
 ---
 
