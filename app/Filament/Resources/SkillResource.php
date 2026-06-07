@@ -7,6 +7,7 @@ use App\Models\Skill;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -73,7 +74,7 @@ class SkillResource extends Resource
 
                 Tables\Columns\TextColumn::make('category_label')
                     ->badge()
-                    ->sortable(),
+                    ->sortable(query: fn (Builder $query, string $direction) => $query->orderBy('category', $direction)),
 
                 Tables\Columns\TextColumn::make('proficiency')
                     ->suffix('%')

@@ -4,7 +4,7 @@
             Tech Stack
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 h-auto md:h-96" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto" data-aos="fade-up" data-aos-delay="100">
             <!-- Expert Block (Span 2 cols, 2 rows) -->
             <div class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow relative overflow-hidden group">
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -15,7 +15,7 @@
                 <h3 class="font-mono text-xl font-bold mb-4 text-primary-600 dark:text-primary-400">Expertise</h3>
                 <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Bertahun-tahun membangun sistem backend yang handal.</p>
                 <div class="space-y-4">
-                    @foreach($skills->get('backend', collect()) as $skill)
+                    @foreach($skills->get('backend', collect())->take(5) as $skill)
                         <div class="flex items-center">
                             <span class="w-24 font-bold text-slate-700 dark:text-slate-300">{{ $skill->name }}</span>
                             <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -30,7 +30,7 @@
             <div class="bg-slate-900 dark:bg-slate-950 p-6 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-700 text-white flex flex-col justify-center">
                 <h3 class="font-mono text-lg font-bold mb-3 text-primary-400">Current Focus</h3>
                 <ul class="space-y-2">
-                    @foreach($skills->get('frontend', collect())->take(3) as $skill)
+                    @foreach($skills->get('backend', collect())->take(3) as $skill)
                         <li class="flex items-center gap-2">
                             <span class="w-2 h-2 bg-primary-500 rounded-full"></span>
                             {{ $skill->name }}

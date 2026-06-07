@@ -11,7 +11,7 @@
                 @endif
             </div>
             <div class="absolute bottom-0 right-0 bg-emerald-500 text-white text-[10px] uppercase font-bold px-2 py-1 rounded-full border-2 border-white tracking-wider">
-                Open to Work
+                Available
             </div>
         </div>
 
