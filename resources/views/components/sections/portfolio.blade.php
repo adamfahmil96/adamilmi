@@ -1,12 +1,33 @@
-<section id="portfolio" class="py-20 bg-white dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="font-mono text-3xl font-bold mb-12 text-center text-slate-900 dark:text-white decoration-primary-600 underline decoration-4 underline-offset-8" data-aos="fade-up">
-            Selected Works
-        </h2>
+<section id="portfolio" class="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
+    <!-- Decorative shapes -->
+    <div class="absolute top-1/2 left-0 w-64 h-64 bg-primary-50 dark:bg-primary-900/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="max-w-6xl mx-auto px-4 relative">
+        <!-- Asymmetric header -->
+        <div class="mb-16 flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-aos="fade-up">
+            <div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
+                    Selected
+                    <span class="text-primary-600 dark:text-primary-400">Works</span>
+                </h2>
+                <div class="w-12 h-1 bg-primary-600 mt-4 transform -rotate-2"></div>
+            </div>
+            <span class="text-sm font-bold text-slate-400 dark:text-slate-500 flex items-center gap-2">
+                {{ count($featuredProjects) }} Projects
+            </span>
+        </div>
+
+        <!-- Broken grid cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
             @foreach($featuredProjects as $index => $project)
-                <div class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                @php
+                    // Create asymmetric column spans
+                    $colSpans = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7', 'lg:col-span-6', 'lg:col-span-6'];
+                    $offsets = ['', '', 'lg:translate-y-4', 'lg:-translate-y-4', '', 'lg:translate-y-4'];
+                    $colSpan = $colSpans[$index % count($colSpans)] ?? 'lg:col-span-6';
+                    $offset = $offsets[$index % count($offsets)] ?? '';
+                @endphp
+                <div class="group {{ $colSpan }} {{ $offset }} bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                     <div class="h-48 bg-slate-800 dark:bg-slate-900 flex items-center justify-center group-hover:bg-slate-700 dark:group-hover:bg-slate-800 transition-colors relative overflow-hidden">
                         @if($project->image)
                             <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-full object-cover">
