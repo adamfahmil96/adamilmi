@@ -49,7 +49,7 @@
 
             <!-- Article Content -->
             <div class="prose prose-lg max-w-none">
-                {!! $post->content !!}
+                {!! \App\Support\HtmlSanitizer::sanitize($post->content) !!}
             </div>
 
             <!-- Share & Navigation -->
